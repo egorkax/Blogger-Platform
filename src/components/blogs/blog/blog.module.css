@@ -1,0 +1,74 @@
+.blockBlog {
+    width: 970px;
+    height: 170px;
+    margin-top: 15px;
+}
+
+.blog {
+    display: flex;
+
+}
+
+.blockImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 156px;
+    height: 156px;
+    background: #FFFFFF;
+    border: 1px solid #DEDBDC;
+    border-radius: 50%;
+}
+
+.blockInfo {
+    margin-left: 10px;
+}
+
+.blockHeaderName {
+}
+
+.titleBlog {
+    width: 235px;
+    height: 24px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1A1718;
+}
+
+.website {
+    width: 238px;
+    height: 24px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #737067;
+
+}
+
+.linkSite {
+    color: #3677F7;
+}
+
+.description {
+    width: 772px;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #1A1718;
+}
+
+
+.line {
+    margin-top: 15px;
+    width: 970px;
+    height: 1px;
+    background: #DEDBDC;
+}
