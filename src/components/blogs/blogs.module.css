@@ -1,0 +1,18 @@
+.blockBlogs {
+    background: #f1eeee;
+    padding-left: 30px;
+
+}
+
+.line {
+    width: 1004px;
+    height: 1px;
+    background: #DEDBDC;
+}
+
+.blockSearch {
+    display: flex;
+    width: 970px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
