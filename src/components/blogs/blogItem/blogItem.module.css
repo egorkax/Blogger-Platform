@@ -6,7 +6,6 @@
 
 .blog {
     display: flex;
-
 }
 
 .blockImg {
@@ -20,6 +19,7 @@
     border-radius: 50%;
 }
 
+
 .blockInfo {
     margin-left: 10px;
 }
@@ -28,24 +28,18 @@
 }
 
 .titleBlog {
-    width: 235px;
-    height: 24px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
-    line-height: 24px;
     color: #1A1718;
 }
 
 .website {
-    width: 238px;
-    height: 24px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 24px;
     color: #737067;
 
 }
@@ -71,4 +65,25 @@
     width: 970px;
     height: 1px;
     background: #DEDBDC;
+}
+
+.blockImgOpen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 144px;
+    height: 144px;
+    background: #FFFFFF;
+    border: 5px solid #DEDBDC;
+    border-radius: 50%;
+}
+
+.createDate {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #797476;
 }

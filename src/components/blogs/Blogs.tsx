@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './blogs.module.css'
-import {Blog} from "./blog/Blog";
+import {BlogItem} from "./blogItem/BlogItem";
+import {blogsAPI} from "../../api/api";
 
 export const Blogs = () => {
+    const [blogs, setBlogs] = useState<Array<any>>([])
+    useEffect(() => {
+        let prom = blogsAPI.getBlogs()
+        prom.then((res) => {
+            setBlogs(res.data)
+            debugger
+        })
+    }, [])
     return (
         <div className={s.blockBlogs}>
             <h2>Blogs</h2>
@@ -19,9 +28,9 @@ export const Blogs = () => {
                 </select>
             </div>
             <div>
-                <Blog/>
-                <Blog/>
-                <Blog/>
+                <BlogItem/>
+                <BlogItem/>
+                <BlogItem/>
 
             </div>
         </div>

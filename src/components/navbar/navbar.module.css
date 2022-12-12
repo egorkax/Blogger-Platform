@@ -8,6 +8,11 @@
     padding-top: 43px;
 }
 
+.blockItemNav {
+    display: flex;
+    width: 252px;
+}
+
 .item {
     display: flex;
     align-items: center;
@@ -31,7 +36,13 @@
 
 }
 
-/*.icon * {*/
-/*    stroke: #F8346B;*/
-/*    fill: #F8346B;*/
-/*}*/
+.line {
+    margin-left: 113px;
+    margin-top: 5px;
+    width: 2px;
+    height: 30px;
+    background: #F8346B;
+    border-radius: 2px 0px 0px 2px;
+
+}
+
