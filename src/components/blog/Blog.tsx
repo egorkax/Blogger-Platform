@@ -23,7 +23,7 @@ export const Blog = (props: any) => {
             <div className={s.blockLogo}>
                 <img src={logoIcon} className={s.logo}/>
             </div>
-            <BlogItemOpen/>
+            {/*<BlogItemOpen/>*/}
 
         </div>
     );

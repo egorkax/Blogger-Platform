@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import s from './blogs.module.css'
 import {BlogItem} from "./blogItem/BlogItem";
-import {blogsAPI} from "../../api/api";
+import {fetchBlogs} from "../../reducers/blogs-reducer";
+import {useAppDispatch, useAppSelector} from "../../app/store";
 
 export const Blogs = () => {
-    const [blogs, setBlogs] = useState<Array<any>>([])
+
+    const dispatch = useAppDispatch()
+    const blogs = useAppSelector(state => state.blogs.blogs)
+    console.log(blogs)
     useEffect(() => {
-        let prom = blogsAPI.getBlogs()
-        prom.then((res) => {
-            setBlogs(res.data)
-            debugger
-        })
+        dispatch(fetchBlogs())
     }, [])
+    const blogsMap = blogs.map((e) => <BlogItem key={e.id} title={e.name} desc={e.description} webSite={e.websiteUrl}/>)
     return (
         <div className={s.blockBlogs}>
             <h2>Blogs</h2>
@@ -28,10 +29,7 @@ export const Blogs = () => {
                 </select>
             </div>
             <div>
-                <BlogItem/>
-                <BlogItem/>
-                <BlogItem/>
-
+                {blogsMap}
             </div>
         </div>
     );

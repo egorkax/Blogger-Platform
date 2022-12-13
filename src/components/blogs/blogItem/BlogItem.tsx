@@ -3,7 +3,15 @@ import s from './blogItem.module.css'
 import AvaIcon from './../../../assets/icons/Ava.svg'
 import {NavLink} from "react-router-dom";
 
-export const BlogItem = (props: any) => {
+type PropsType = {
+    title: string
+    desc: string
+    webSite: string
+    createdAt?: string
+
+}
+
+export const BlogItem = (props: PropsType) => {
     return (
         <div className={s.blockBlog}>
             <div className={s.blog}>
@@ -14,28 +22,24 @@ export const BlogItem = (props: any) => {
                 <div className={s.blockInfo}>
                     <div className={s.blockHeaderName}>
                         <NavLink to={`/blog`}>
-                            <p className={s.titleBlog}>Some names blog</p>
+                            <p className={s.titleBlog}>{props.title}</p>
                         </NavLink>
                         <p className={s.website}>Website:<a className={s.linkSite}
-                                                            href={'https://www.youtube.com/'}> https://www.youtube.com/</a>
+                                                            href={props.webSite}>{props.webSite}</a>
                         </p>
                     </div>
                     <p className={s.description}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-
+                        {props.desc}
                     </p>
                 </div>
             </div>
-
             <div className={s.line}/>
         </div>
     );
 };
 
 
-export const BlogItemOpen = (props: any) => {
+export const BlogItemOpen = (props: PropsType) => {
 
     return (
         <div className={s.blockBlog}>
@@ -45,17 +49,14 @@ export const BlogItemOpen = (props: any) => {
                 </div>
                 <div className={s.blockInfo}>
                     <div className={s.blockHeaderName}>
-                        <p className={s.titleBlog}>{props.blogName}Some names blog</p>
-                        <p className={s.createDate}>Blog creation date:<span>{props.date}22.22.2222</span></p>
+                        <p className={s.titleBlog}>{props.title}</p>
+                        <p className={s.createDate}>Blog creation date:<span>{props.createdAt}</span></p>
                         <p className={s.website}>Website:<a className={s.linkSite}
-                                                            href={'https://www.youtube.com/'}> https://www.youtube.com/</a>
+                                                            href={props.webSite}> {props.webSite}</a>
                         </p>
                     </div>
                     <p className={s.description}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor
-
+                        {props.desc}
                     </p>
                 </div>
             </div>
