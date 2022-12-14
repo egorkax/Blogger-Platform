@@ -11,22 +11,34 @@ const instance = axios.create({
 
 export const blogsAPI = {
     getBlogs(currentPage: number = 1, pageSize: number = 10) {
-        return instance.get<BlogsResponseType>(`blogs?pageNumber=${currentPage}&pageSize=${pageSize}`)
+        return instance.get<ResponseType<BlogType[]>>(`blogs?pageNumber=${currentPage}&pageSize=${pageSize}`)
+    },
+    getBlog(blogId: string) {
+        return instance.get<ResponseType<PostType[]>>(`blogs/${blogId}/posts`)
+    },
 
-    }
 }
 
-export type BlogsResponseType = {
-    "pagesCount": number
-    "page": number
-    "pageSize": number
-    "totalCount": number
-    "items": BlogType[]
+export type ResponseType<T> = {
+    pagesCount: number
+    page: number
+    pageSize: number
+    totalCount: number
+    items: T
 }
 export type BlogType = {
     id: string
     name: string
     description: string
     websiteUrl: string
+    createdAt: string
+}
+export type PostType = {
+    id: string
+    title: string
+    shortDescription: string
+    content: string
+    blogId: string
+    blogName: string
     createdAt: string
 }

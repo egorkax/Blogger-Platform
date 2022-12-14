@@ -1,4 +1,4 @@
-import {AnyAction, applyMiddleware, combineReducers, createStore} from 'redux';
+import {AnyAction, applyMiddleware, combineReducers, compose, createStore, legacy_createStore} from 'redux';
 import thunk, {ThunkDispatch} from "redux-thunk";
 import createSagaMiddleware from 'redux-saga'
 import {all} from 'redux-saga/effects'
@@ -12,10 +12,20 @@ const rootReducer = combineReducers({
     blogs: blogsReducer
 })
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
 const sagaMiddleware = createSagaMiddleware()
 
 // непосредственно создаём store
-export const store = createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware));
+export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
+
 // определить автоматически тип всего объекта состояния
 export type AppRootStateType = ReturnType<typeof rootReducer>
 

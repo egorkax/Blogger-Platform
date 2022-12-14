@@ -1,0 +1,39 @@
+.blockPostItem {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.blockImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 180px;
+    background-color: #FFFFFF;
+}
+
+.titlePost {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    color: #1A1718;
+}
+
+.descPost {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1A1718;
+}
+
+.datePost {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: #636262;
+}

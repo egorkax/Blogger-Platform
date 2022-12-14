@@ -5,14 +5,14 @@ import {fetchBlogs} from "../../reducers/blogs-reducer";
 import {useAppDispatch, useAppSelector} from "../../app/store";
 
 export const Blogs = () => {
-
     const dispatch = useAppDispatch()
     const blogs = useAppSelector(state => state.blogs.blogs)
-    console.log(blogs)
     useEffect(() => {
+
         dispatch(fetchBlogs())
     }, [])
-    const blogsMap = blogs.map((e) => <BlogItem key={e.id} title={e.name} desc={e.description} webSite={e.websiteUrl}/>)
+    const blogsMap = blogs.map((e) => <BlogItem key={e.id} id={e.id} title={e.name} desc={e.description}
+                                                webSite={e.websiteUrl}/>)
     return (
         <div className={s.blockBlogs}>
             <h2>Blogs</h2>
