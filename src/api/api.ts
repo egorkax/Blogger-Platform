@@ -18,7 +18,11 @@ export const blogsAPI = {
     },
 
 }
-
+export const postsAPI = {
+    getPosts(currentPage: number = 1, pageSize: number = 10) {
+        return instance.get(`posts?pageNumber=${currentPage}&pageSize=${pageSize}`)
+    }
+}
 export type ResponseType<T> = {
     pagesCount: number
     page: number

@@ -13,11 +13,13 @@ export const Blog = () => {
     const {blogId} = useParams()
     const dispatch = useAppDispatch()
     const blogs = useAppSelector(state => state.blogs.blogs)
+    const posts = useAppSelector(state => state.blogs.blog.posts)
     const blog = blogs.find(e => e.id === blogId)
     debugger
     useEffect(() => {
         dispatch(fetchBlog(blogId!, blogs))
     }, [])
+    const postsMap = posts.map(e => <PostItem key={e.id} post={e}/>)
     return (
         <div className={s.blockBlogs}>
             <div className={s.header}>
@@ -38,11 +40,7 @@ export const Blog = () => {
             <BlogItem title={blog!.name} desc={blog!.description} open={true} webSite={blog!.websiteUrl}
                       createdAt={blog!.createdAt}/>
             <div className={s.blogPosts}>
-                <PostItem/>
-                <PostItem/>
-                <PostItem/>
-                <PostItem/>
-                <PostItem/>
+                {postsMap}
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ export const useAppDispatch = () => useDispatch<ThunkDispatch<AppRootStateType, 
 sagaMiddleware.run(rootWatcher)
 
 function* rootWatcher() {
-    yield all([blogsSagaWatcher()])
+    yield all([blogsSagaWatcher(), blogsSagaWatcher(),])
 }
 
 
