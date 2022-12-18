@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import s from './blogs.module.css'
-import {BlogItem} from "./blogItem/BlogItem";
-import {fetchBlogs} from "../../reducers/blogs-reducer";
-import {useAppDispatch, useAppSelector} from "../../app/store";
+import {BlogItem} from "../blogItem/BlogItem";
+import {fetchBlogs} from "../../../reducers/blogs-reducer";
+import {useAppDispatch, useAppSelector} from "../../../reducers/store";
 
 export const Blogs = () => {
     const dispatch = useAppDispatch()

@@ -1,19 +1,26 @@
-import {blogsAPI, BlogType, postsAPI, PostType} from "../api/api";
+import {postsAPI, PostType} from "../api/api";
 import {call, put, takeEvery} from "redux-saga/effects";
 
 
 const initialState: InitialStateType = {
     posts: [],
+    post: {
+        id: '',
+        title: '',
+        shortDescription: '',
+        content: '',
+        blogId: '',
+        blogName: '',
+        createdAt: ''
+    }
 }
 //Reducer
-export const blogsReducer = (state = initialState, action: ActionsType) => {
+export const postsReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
         case "SET-POSTS":
             return {...state, posts: action.posts}
-        // case "SET-BLOG":
-        //     return {...state, blog: {...state.blog, blogInfo: action.blog}}
-        // case "SET-BLOG-POSTS":
-        //     return {...state, blog: {...state.blog, posts: action.posts}}
+        case "SET-POST":
+            return {...state, post: action.post}
         default:
             return state;
     }
@@ -22,10 +29,8 @@ export const blogsReducer = (state = initialState, action: ActionsType) => {
 export const setPostsAC = (posts: PostType[]) =>
     ({type: "SET-POSTS", posts} as const)
 
-export const setBlogAC = (blog: BlogType) =>
-    ({type: "SET-BLOG", blog} as const)
-export const setBlogPostsAC = (posts: PostType[]) =>
-    ({type: "SET-BLOG-POSTS", posts} as const)
+export const setPostAC = (post: PostType) =>
+    ({type: "SET-POST", post} as const)
 
 //saga
 export function* fetchPostsWorkerSaga(): any {
@@ -33,30 +38,30 @@ export function* fetchPostsWorkerSaga(): any {
     yield put(setPostsAC(res.data.items))
 }
 
-export const fetchBlogs = () => ({type: 'POSTS/FETCH-POSTS'})
+export const fetchPosts = () => ({type: 'POSTS/FETCH-POSTS'})
 
-// export function* fetchBlogWorkerSaga(action: ReturnType<typeof fetchBlog>): any {
-//     const blog = action.blogs.find(e => e.id === action.blogId)
-//     yield put(setBlogAC(blog!))
-//     const res = yield call(blogsAPI.getBlog, action.blogId)
-//     yield put(setBlogPostsAC(res.data.items))
-//     debugger
-//
-// }
-//
-// export const fetchBlog = (blogId: string, blogs: BlogType[]) => ({type: 'BLOGS/FETCH-BLOG', blogId, blogs})
+export function* fetchPostWorkerSaga(action: ReturnType<typeof fetchPost>): any {
+    const res = yield call(postsAPI.getPost, action.postId)
+    yield put(setPostAC(res.data))
+    debugger
+}
+
+export const fetchPost = (postId: string) => ({type: 'POSTS/FETCH-POST', postId})
 
 
-export function* blogsSagaWatcher() {
+export function* postsSagaWatcher() {
     yield takeEvery('POSTS/FETCH-POSTS', fetchPostsWorkerSaga)
+    yield takeEvery('POSTS/FETCH-POST', fetchPostWorkerSaga)
 
 }
 
 // types
 type InitialStateType = {
     posts: PostType[]
+    post: PostType
 }
 type ActionsType =
     | ReturnType<typeof setPostsAC>
+    | ReturnType<typeof setPostAC>
 
 

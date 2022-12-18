@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './blogItem.module.css'
-import AvaIcon from './../../../assets/icons/Ava.svg'
+import AvaIcon from '../../../assets/icons/Ava.svg'
 import {NavLink} from "react-router-dom";
 
 type PropsType = {
@@ -29,7 +29,7 @@ export const BlogItem = (props: PropsType) => {
                                 <p className={s.titleBlog}>{props.title}</p>
                                 <p className={s.createDate}>Blog creation date:<span>{props.createdAt}</span></p>
                             </>
-                            : <NavLink to={`/blog/${props.id}`}>
+                            : <NavLink to={`/blog/${props.id}`} className={s.link} >
                                 <p className={s.titleBlog}>{props.title}</p>
                             </NavLink>
                         }

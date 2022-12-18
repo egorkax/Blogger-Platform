@@ -2,14 +2,14 @@ import {AnyAction, applyMiddleware, combineReducers, compose, createStore, legac
 import thunk, {ThunkDispatch} from "redux-thunk";
 import createSagaMiddleware from 'redux-saga'
 import {all} from 'redux-saga/effects'
-import {blogsReducer, blogsSagaWatcher} from "../reducers/blogs-reducer";
+import {blogsReducer, blogsSagaWatcher} from "./blogs-reducer";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+import {postsReducer, postsSagaWatcher} from "./posts-reducer";
 
 
-// объединяя reducer-ы с помощью combineReducers,
-// мы задаём структуру нашего единственного объекта-состояния
 const rootReducer = combineReducers({
-    blogs: blogsReducer
+    blogs: blogsReducer,
+    posts: postsReducer
 })
 
 declare global {
@@ -23,10 +23,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const sagaMiddleware = createSagaMiddleware()
 
-// непосредственно создаём store
 export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
 
-// определить автоматически тип всего объекта состояния
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
@@ -36,10 +34,8 @@ export const useAppDispatch = () => useDispatch<ThunkDispatch<AppRootStateType, 
 sagaMiddleware.run(rootWatcher)
 
 function* rootWatcher() {
-    yield all([blogsSagaWatcher(), blogsSagaWatcher(),])
+    yield all([blogsSagaWatcher(), postsSagaWatcher(),])
 }
 
-
-// а это, чтобы можно было в консоли браузера обращаться к store в любой момент
 // @ts-ignore
 window.store = store;

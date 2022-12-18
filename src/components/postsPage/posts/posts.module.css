@@ -1,0 +1,20 @@
+.blockPostsPage {
+}
+
+.line {
+    width: 1004px;
+    height: 1px;
+    background: #DEDBDC;
+}
+
+.blockSearch {
+    margin-top: 10px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.blockPosts {
+    display: flex;
+    flex-wrap: wrap;
+}

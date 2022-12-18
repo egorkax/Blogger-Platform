@@ -1,0 +1,10 @@
+.contentInfo {
+    display: flex;
+    width: 1030px
+}
+
+.content {
+    background: #f8f4f4;
+    margin-top: 1px;
+    padding-left: 30px;
+}

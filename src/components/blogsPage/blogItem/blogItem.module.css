@@ -27,6 +27,10 @@
 .blockHeaderName {
 }
 
+.link {
+    text-decoration: none;
+}
+
 .titleBlog {
     font-family: 'Inter';
     font-style: normal;
