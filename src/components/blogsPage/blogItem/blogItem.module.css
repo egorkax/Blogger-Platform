@@ -24,9 +24,6 @@
     margin-left: 10px;
 }
 
-.blockHeaderName {
-}
-
 .link {
     text-decoration: none;
 }
@@ -61,14 +58,6 @@
     font-size: 14px;
     line-height: 24px;
     color: #1A1718;
-}
-
-
-.line {
-    margin-top: 15px;
-    width: 970px;
-    height: 1px;
-    background: #DEDBDC;
 }
 
 .blockImgOpen {

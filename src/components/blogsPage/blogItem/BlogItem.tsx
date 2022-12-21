@@ -2,6 +2,7 @@ import React from 'react';
 import s from './blogItem.module.css'
 import AvaIcon from '../../../assets/icons/Ava.svg'
 import {NavLink} from "react-router-dom";
+import {Line} from "../../../common/Line/Line";
 
 type PropsType = {
     id?: string
@@ -23,13 +24,13 @@ export const BlogItem = (props: PropsType) => {
                 </div>
 
                 <div className={s.blockInfo}>
-                    <div className={s.blockHeaderName}>
+                    <div>
                         {props.open ?
                             <>
                                 <p className={s.titleBlog}>{props.title}</p>
                                 <p className={s.createDate}>Blog creation date:<span>{props.createdAt}</span></p>
                             </>
-                            : <NavLink to={`/blog/${props.id}`} className={s.link} >
+                            : <NavLink to={`/blog/${props.id}`} className={s.link}>
                                 <p className={s.titleBlog}>{props.title}</p>
                             </NavLink>
                         }
@@ -44,7 +45,7 @@ export const BlogItem = (props: PropsType) => {
                     </p>
                 </div>
             </div>
-            <div className={s.line}/>
+            <Line/>
         </div>
     );
 };

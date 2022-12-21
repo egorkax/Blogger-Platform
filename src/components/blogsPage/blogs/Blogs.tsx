@@ -3,6 +3,9 @@ import s from './blogs.module.css'
 import {BlogItem} from "../blogItem/BlogItem";
 import {fetchBlogs} from "../../../reducers/blogs-reducer";
 import {useAppDispatch, useAppSelector} from "../../../reducers/store";
+import SearchIcon from './../../../assets/icons/Search.svg'
+import {Button} from "../../../common/Button/Button";
+import {Line} from "../../../common/Line/Line";
 
 export const Blogs = () => {
     const dispatch = useAppDispatch()
@@ -11,26 +14,31 @@ export const Blogs = () => {
 
         dispatch(fetchBlogs())
     }, [])
-    const blogsMap = blogs.map((e) => <BlogItem key={e.id} id={e.id} title={e.name} desc={e.description}
-                                                webSite={e.websiteUrl}/>)
+
+    const blogsMap = blogs.map((e) => {
+        return <div>
+            <BlogItem key={e.id} id={e.id} title={e.name} desc={e.description}
+                      webSite={e.websiteUrl}/>
+        </div>
+    })
     return (
-        <div className={s.blockBlogs}>
+        <div>
             <h2>Blogs</h2>
-            <div className={s.line}/>
+            <Line long={true}/>
             <div className={s.blockSearch}>
-                <div>
-                    <input/>
+                <div className={s.blockInput}>
+                    <img src={SearchIcon}/>
+                    <input className={s.input} placeholder={'Search'}/>
                 </div>
-                <select>
+                <select className={s.blockSelect}>
                     <option value="1">New blogs first</option>
                     <option value="2">Old blogs first</option>
                     <option value="3">From A to Z</option>
                     <option value="4">From Z to A</option>
                 </select>
             </div>
-            <div>
-                {blogsMap}
-            </div>
+            {blogsMap}
+            <Button/>
         </div>
     );
 };
